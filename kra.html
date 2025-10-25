@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRA Services - Phintec Cyber Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional CSS for image styling */
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover .service-image img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🛡️</span>
+                    <h1>Phintec Cyber Services</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="design.html">Graphic Design</a></li>
+                        <li><a href="kra.html" class="active">KRA Services</a></li>
+                        <li><a href="cv.html">CV Writing</a></li>
+                        <li><a href="other-services.html">Other Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>KRA Services</h1>
+            <p>Fast and reliable Kenya Revenue Authority services</p>
+        </div>
+    </section>
+
+    <!-- KRA Services -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid detailed">
+                <div class="service-item">
+                    <div class="service-image">
+                        <img src="images/kra.png" alt="">
+                    </div>
+                    <div class="service-details">
+                        <h3>KRA PIN Retrieval (Lost or Forgotten Email)</h3>
+                        <p class="price">Ksh 400</p>
+                        <p>Retrieve your KRA PIN when you've lost access to your registered email</p>
+                        <button class="btn btn-primary order-btn" data-service="KRA PIN Retrieval (Lost Email)" data-price="400" data-type="pin-retrieval">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-image">
+                        <img src="images/kra.png" alt="">
+                    </div>
+                    <div class="service-details">
+                        <h3>KRA PIN Retrieval (With Original Email)</h3>
+                        <p class="price">Ksh 300</p>
+                        <p>Retrieve your KRA PIN when you have access to your registered email</p>
+                        <button class="btn btn-primary order-btn" data-service="KRA PIN Retrieval (With Email)" data-price="300" data-type="pin-retrieval">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-image">
+                        <img src="images/kra.png" alt="">
+                    </div>
+                    <div class="service-details">
+                        <h3>KRA PIN Application</h3>
+                        <p class="price">Ksh 300</p>
+                        <p>Apply for a new KRA PIN for individuals or businesses</p>
+                        <button class="btn btn-primary order-btn" data-service="KRA PIN Application" data-price="300" data-type="pin-application">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-form-section">
+        <div class="container">
+            <div class="order-form-container">
+                <h2>Complete Your KRA Service Order</h2>
+                <p class="service-description">Please provide your details to complete your KRA service request</p>
+                
+                <div class="order-summary-box">
+                    <h3>Order Summary</h3>
+                    <p class="service-name" id="order-service-name">Service Name</p>
+                    <p class="price" id="order-service-price">Ksh 0</p>
+                </div>
+
+                <!-- Formspree Integration -->
+                <form id="orderForm" action="https://formspree.io/f/xwpwegdd" method="POST">
+                    <input type="hidden" name="_subject" value="New KRA Service Order - Phintec Cyber">
+                    <input type="hidden" name="_replyto" id="reply-to-email">
+                    <input type="hidden" name="service_type" value="KRA Services">
+                    <input type="hidden" name="selected_service" id="selected-service">
+                    <input type="hidden" name="selected_price" id="selected-price">
+
+                    <!-- KRA Specific Fields -->
+                    <div id="kra-personal-details" class="form-section" style="display: none;">
+                        <h3>Personal Details for KRA <span class="required">*</span></h3>
+                        
+                        <div class="form-group">
+                            <label for="order-first-name">First Name as it appears in your ID <span class="required">*</span></label>
+                            <input type="text" id="order-first-name" name="first_name" placeholder="Enter your first name exactly as it appears on your ID">
+                            <span class="error-message" id="order-first-name-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="order-id-number">ID Number <span class="required">*</span></label>
+                            <input type="text" id="order-id-number" name="id_number" placeholder="Enter your national ID number">
+                            <span class="error-message" id="order-id-number-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-whatsapp">WhatsApp Number <span class="required">*</span></label>
+                        <input type="tel" id="order-whatsapp" name="whatsapp_number" required placeholder="e.g. 0742774083">
+                        <span class="error-message" id="order-whatsapp-error"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="order-email" name="email" required placeholder="your@email.com">
+                        <span class="error-message" id="order-email-error"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-details">Service Requirements/Details</label>
+                        <textarea id="order-details" name="service_details" rows="4" placeholder="Please provide any specific details for your KRA service (e.g., previous PIN if applicable, etc.)..."></textarea>
+                    </div>
+
+                    <div class="payment-section">
+                        <h3>Payment Information <span class="required">*</span></h3>
+                        
+                        <div class="form-group">
+                            <label>Payment Method <span class="required">*</span></label>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="mpesa" required checked>
+                                    <span>Lipa na M-Pesa</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="airtel">
+                                    <span>Airtel Money</span>
+                                </label>
+                            </div>
+                            <span class="error-message" id="payment-error"></span>
+                        </div>
+
+                        <!-- M-Pesa Details -->
+                        <div id="mpesa-details" class="payment-details-box active">
+                            <h4>Lipa na M-Pesa Instructions</h4>
+                            <div class="payment-instruction">
+                                <p><strong>Pay via Lipa na M-Pesa:</strong></p>
+                                <div class="payment-number">0742774083</div>
+                                <p><strong>Steps:</strong></p>
+                                <ol>
+                                    <li>Go to M-Pesa menu</li>
+                                    <li>Select <strong>Send Money</strong></li>
+                                    <li>Enter Phone Number: <strong>0742774083</strong></li>
+                                    <li>Enter Amount: <strong>Ksh <span id="mpesa-amount">0</span></strong></li>
+                                    <li>Enter your M-Pesa PIN</li>
+                                    <li>Press OK</li>
+                                </ol>
+                                <p><em>You will receive a confirmation message with your transaction code</em></p>
+                            </div>
+                        </div>
+
+                        <!-- Airtel Money Details -->
+                        <div id="airtel-details" class="payment-details-box">
+                            <h4>Airtel Money Instructions</h4>
+                            <div class="payment-instruction">
+                                <p><strong>Send money to this number:</strong></p>
+                                <div class="payment-number">0742774083</div>
+                                <p><strong>Steps:</strong></p>
+                                <ol>
+                                    <li>Go to Airtel Money menu</li>
+                                    <li>Select <strong>Send Money</strong></li>
+                                    <li>Enter Phone Number: <strong>0742774083</strong></li>
+                                    <li>Enter Amount: <strong>Ksh <span id="airtel-amount">0</span></strong></li>
+                                    <li>Enter your Airtel Money PIN</li>
+                                    <li>Press OK</li>
+                                </ol>
+                                <p><em>You will receive a confirmation message with your transaction code</em></p>
+                            </div>
+                        </div>
+
+                        <!-- Transaction Code Input -->
+                        <div class="form-group transaction-code-group">
+                            <label for="order-transaction-code">M-Pesa Transaction Code <span class="required">*</span></label>
+                            <input type="text" id="order-transaction-code" name="transaction_code" class="transaction-code-input" required 
+                                   placeholder="e.g. TJODR58HI" maxlength="12"
+                                   pattern="[A-Z0-9]{8,12}" title="Enter your transaction code (8-12 characters)">
+                            <div class="transaction-code-format">
+                                Format: 8-12 characters (letters and numbers only) - Found in your payment confirmation message
+                            </div>
+                            <span class="error-message" id="order-transaction-code-error"></span>
+                        </div>
+
+                        <div class="payment-confirmation">
+                            <label class="checkbox-option">
+                                <input type="checkbox" id="order-payment-confirmed" name="payment_confirmed" required>
+                                <span>I confirm that I have made the payment of <strong id="order-payment-amount">Ksh 0</strong> and entered the correct transaction code</span>
+                            </label>
+                            <span class="error-message" id="order-payment-confirmed-error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-block">Submit Order & Verify Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Phintec Cyber Services</h3>
+                    <p>Your reliable partner for all digital solutions</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="design.html">Graphic Design</a></li>
+                        <li><a href="kra.html">KRA Services</a></li>
+                        <li><a href="cv.html">CV Writing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Eric Mutiiria Muriuki</p>
+                    <p>Phone: 0742774083</p>
+                    <p>Location: Eastern Bypass, Kamakis</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Phintec Cyber Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            const header = document.querySelector('header');
+            
+            // Mobile menu toggle
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (nav && nav.classList.contains('active') && 
+                    !event.target.closest('nav') && 
+                    !event.target.closest('.mobile-menu-btn')) {
+                    nav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (nav) {
+                        nav.classList.remove('active');
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Service Order Functionality
+            const orderButtons = document.querySelectorAll('.order-btn');
+            const orderFormSection = document.querySelector('.order-form-section');
+            const kraPersonalDetails = document.getElementById('kra-personal-details');
+            
+            // Payment details toggle functionality - FIXED VERSION
+            function setupPaymentDetailsToggle() {
+                const paymentRadios = document.querySelectorAll('input[name="payment_method"]');
+                const paymentDetailsBoxes = document.querySelectorAll('.payment-details-box');
+                
+                // Hide all payment details first
+                paymentDetailsBoxes.forEach(box => {
+                    box.classList.remove('active');
+                });
+                
+                // Show the currently selected payment method
+                const selectedMethod = document.querySelector('input[name="payment_method"]:checked').value;
+                const activeDetailsBox = document.getElementById(`${selectedMethod}-details`);
+                if (activeDetailsBox) {
+                    activeDetailsBox.classList.add('active');
+                }
+                
+                // Add change event listeners
+                paymentRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        // Hide all payment details boxes
+                        paymentDetailsBoxes.forEach(box => {
+                            box.classList.remove('active');
+                        });
+                        
+                        // Show the selected payment details
+                        const selectedMethod = this.value;
+                        const detailsBox = document.getElementById(`${selectedMethod}-details`);
+                        if (detailsBox) {
+                            detailsBox.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Transaction code validation
+            function isValidTransactionCode(code) {
+                const transactionCodeRegex = /^[A-Z0-9]{8,12}$/;
+                return transactionCodeRegex.test(code);
+            }
+            
+            // ID number validation
+            function isValidIDNumber(id) {
+                // Kenyan ID numbers are typically 8 digits
+                const idRegex = /^[0-9]{8}$/;
+                return idRegex.test(id);
+            }
+            
+            // Form validation for KRA services
+            function validateKRAForm() {
+                let isValid = true;
+                
+                // Clear previous error messages
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(msg => msg.textContent = '');
+                
+                // Check if KRA personal details section is visible
+                if (kraPersonalDetails.style.display !== 'none') {
+                    const firstName = document.getElementById('order-first-name');
+                    const idNumber = document.getElementById('order-id-number');
+                    
+                    // Validate first name
+                    if (!firstName.value.trim()) {
+                        document.getElementById('order-first-name-error').textContent = 'First name is required';
+                        isValid = false;
+                    }
+                    
+                    // Validate ID number
+                    if (!idNumber.value.trim()) {
+                        document.getElementById('order-id-number-error').textContent = 'ID number is required';
+                        isValid = false;
+                    } else if (!isValidIDNumber(idNumber.value.trim())) {
+                        document.getElementById('order-id-number-error').textContent = 'Please enter a valid 8-digit ID number';
+                        isValid = false;
+                    }
+                }
+                
+                // Validate WhatsApp
+                const whatsapp = document.getElementById('order-whatsapp');
+                if (!whatsapp.value.trim()) {
+                    document.getElementById('order-whatsapp-error').textContent = 'WhatsApp number is required';
+                    isValid = false;
+                } else if (!isValidPhone(whatsapp.value.trim())) {
+                    document.getElementById('order-whatsapp-error').textContent = 'Please enter a valid phone number';
+                    isValid = false;
+                }
+                
+                // Validate email
+                const email = document.getElementById('order-email');
+                if (!email.value.trim()) {
+                    document.getElementById('order-email-error').textContent = 'Email address is required';
+                    isValid = false;
+                } else if (!isValidEmail(email.value.trim())) {
+                    document.getElementById('order-email-error').textContent = 'Please enter a valid email address';
+                    isValid = false;
+                }
+                
+                // Validate transaction code
+                const transactionCode = document.getElementById('order-transaction-code');
+                if (!transactionCode.value.trim()) {
+                    document.getElementById('order-transaction-code-error').textContent = 'Transaction code is required';
+                    isValid = false;
+                } else if (!isValidTransactionCode(transactionCode.value.trim())) {
+                    document.getElementById('order-transaction-code-error').textContent = 'Please enter a valid transaction code (8-12 characters, letters and numbers only)';
+                    isValid = false;
+                }
+                
+                // Validate payment confirmation
+                const paymentConfirmed = document.getElementById('order-payment-confirmed');
+                if (!paymentConfirmed.checked) {
+                    document.getElementById('order-payment-confirmed-error').textContent = 'You must confirm payment before submitting';
+                    isValid = false;
+                }
+                
+                return isValid;
+            }
+            
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            function isValidPhone(phone) {
+                const phoneRegex = /^[0-9]{9,12}$/;
+                return phoneRegex.test(phone.replace(/\s/g, ''));
+            }
+            
+            // Service order functionality
+            if (orderButtons.length > 0) {
+                orderButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const service = this.getAttribute('data-service');
+                        const price = this.getAttribute('data-price');
+                        const serviceType = this.getAttribute('data-type');
+                        
+                        // Scroll to order form section
+                        if (orderFormSection) {
+                            // Update order form with service details
+                            const orderServiceName = document.getElementById('order-service-name');
+                            const orderServicePrice = document.getElementById('order-service-price');
+                            const orderPaymentAmount = document.getElementById('order-payment-amount');
+                            const mpesaAmount = document.getElementById('mpesa-amount');
+                            const airtelAmount = document.getElementById('airtel-amount');
+                            const selectedService = document.getElementById('selected-service');
+                            const selectedPrice = document.getElementById('selected-price');
+                            
+                            if (orderServiceName) orderServiceName.textContent = service;
+                            if (orderServicePrice) orderServicePrice.textContent = `Ksh ${price}`;
+                            if (orderPaymentAmount) orderPaymentAmount.textContent = `Ksh ${price}`;
+                            if (mpesaAmount) mpesaAmount.textContent = price;
+                            if (airtelAmount) airtelAmount.textContent = price;
+                            if (selectedService) selectedService.value = service;
+                            if (selectedPrice) selectedPrice.value = price;
+                            
+                            // Update reply-to email
+                            document.getElementById('reply-to-email').value = document.getElementById('order-email').value;
+                            
+                            // Show or hide KRA personal details based on service type
+                            if (serviceType === 'pin-retrieval' || serviceType === 'pin-application') {
+                                kraPersonalDetails.style.display = 'block';
+                                // Make fields required
+                                document.getElementById('order-first-name').required = true;
+                                document.getElementById('order-id-number').required = true;
+                            } else {
+                                kraPersonalDetails.style.display = 'none';
+                                // Remove required attribute
+                                document.getElementById('order-first-name').required = false;
+                                document.getElementById('order-id-number').required = false;
+                            }
+                            
+                            // Show order form section
+                            orderFormSection.classList.add('active');
+                            
+                            // Scroll to order form
+                            orderFormSection.scrollIntoView({ behavior: 'smooth' });
+                            
+                            // Setup payment details toggle
+                            setupPaymentDetailsToggle();
+                        }
+                    });
+                });
+            }
+            
+            // Order Form Submission
+            const orderForm = document.getElementById('orderForm');
+            if (orderForm) {
+                orderForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validate form
+                    if (!validateKRAForm()) {
+                        alert('Please fix the errors in the form before submitting.');
+                        return;
+                    }
+                    
+                    // Update reply-to email before submission
+                    document.getElementById('reply-to-email').value = document.getElementById('order-email').value;
+                    
+                    // Show loading state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = 'Submitting...';
+                    submitBtn.disabled = true;
+                    
+                    // Form will submit to Formspree automatically
+                    // Formspree will handle the redirect/response
+                    
+                    // Allow form to submit to Formspree
+                    this.submit();
+                });
+            }
+            
+            // Check for Formspree success in URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                alert('Thank you! Your KRA service order has been submitted successfully. We will process your order and contact you shortly.');
+                
+                // Reset form and hide order section
+                const orderForm = document.getElementById('orderForm');
+                if (orderForm) orderForm.reset();
+                if (orderFormSection) orderFormSection.classList.remove('active');
+                if (kraPersonalDetails) kraPersonalDetails.style.display = 'none';
+                
+                // Clear URL parameters
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+            
+            // Scroll to top functionality
+            const scrollToTopBtn = document.createElement('button');
+            scrollToTopBtn.className = 'scroll-to-top';
+            scrollToTopBtn.innerHTML = '↑';
+            scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+            document.body.appendChild(scrollToTopBtn);
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Initialize payment toggle on page load
+            setupPaymentDetailsToggle();
+        });
+    </script>
+</body>
+</html>
